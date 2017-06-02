@@ -12,23 +12,10 @@ class TranslateServiceTest {
     @Test
     fun shouldSendWordToTranslateService() {
         val WORD_VALUE = "word"
-        
+
         translateService.translateWord(WORD_VALUE)
 
-        verify(translateServiceApi).translateWord(Word("word"))
+        verify(translateServiceApi).translateWord(Word(WORD_VALUE))
     }
 }
 
-class TranslateService(private val translateServiceApi: TranslateServiceApi) {
-
-    fun translateWord(value: String) {
-        translateServiceApi.translateWord(Word(value))
-    }
-}
-
-data class Word(val value: String)
-
-interface TranslateServiceApi {
-
-    fun translateWord(word : Word)
-}
